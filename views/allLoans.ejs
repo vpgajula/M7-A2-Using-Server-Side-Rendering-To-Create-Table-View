@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Customer Loans</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            border-color: black;
+            border: 1px solid rgb(146, 143, 143);
+            width: 100%;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: small;
+        }
+
+        th,
+        td {
+            text-align: left;
+            padding: 8px;
+            border-bottom: 1 px solid #cac9c9;
+        }
+
+        th {
+            background-color: #268503;
+            color: white;
+        }
+
+        tr:hover {
+            background-color: #a1eb8e;
+        }
+
+        tr {
+            border: 1px solid #cac9c9;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Customer Loans</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Customer ID</th>
+                <th>Loan Type</th>
+                <th>Loan Number</th>
+                <th>Loan Amount</th>
+                <th>Interest Rate</th>
+                <th>Loan Term Years</th>
+                <th>Start Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% customerloan.forEach(function(loan) { %>
+                <tr>
+                    <td><%= loan.customerID %></td>
+                    <td><%= loan.loanType %></td>
+                    <td><%= loan.loanNumber %></td>
+                    <td><%= loan.loanAmount.toLocaleString('en-US', {
+                        style: 'currency',
+                        currency: 'USD',
+                        minimumFractionDigits: 2
+                      }) %></td>
+                    <td><%= loan.interestRate + '%' %></td>
+                    <td><%= loan.loanTermYears %></td>
+                    <td><%= loan.startDate.toLocaleDateString('en-US') %></td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</body>
+
+</html>
